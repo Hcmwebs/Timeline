@@ -1,10 +1,18 @@
 const text = document.getElementById('text');
-const phrases = ['Hello, I am Heze.', 'I am a Freelancer Frontend developer and UI/UX Designer.','This is my learning path.' ];
+const phrases = ['Hello, I am Heze.', 'I am a Freelance Frontend developer and UI/UX Designer.','This is my learning path.' ];
+const listCards = document.querySelectorAll('li');
+console.log(listCards)
+const appearOnScrollOptions = {
+  threshold : 0,
+  rootMargin: '-250px 0px -250px 0px',
+};
 let i = 0;
 let j = 0;
 let currentPhrase = [];
 let isDeleting = false;
 let isEnd = false;
+
+// Typewriter - effect
 
 function loop(){
   isEnd = false
@@ -45,8 +53,31 @@ function loop(){
   }
   const spedUp = Math.random() * (80 - 50) + 50;
   const normalSpeed = Math.random() * (300 - 200 ) + 200;
-  const time = isEnd ? 3000 : isDeleting ? spedUp : normalSpeed;
-   setTimeout(loop, time)
+  const time = isEnd ? 2500 : isDeleting ? spedUp : normalSpeed;
+
+  setTimeout(loop, time)
 }
 
 loop()
+
+
+// OnScroll, listCards appear
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+entries.forEach(entry =>{
+  if(!entry.isIntersecting){
+    return;
+  }
+  else{
+    entry.target.classList.add('appear');
+    appearOnScroll.unobserve(entry.target)
+  }
+
+})
+
+}, appearOnScrollOptions);
+
+listCards.forEach(card =>{
+  appearOnScroll.observe(card);
+})
+
