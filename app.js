@@ -1,7 +1,6 @@
 const text = document.getElementById('text');
 const phrases = ['Hello, I am Heze.', 'I am a Freelance Frontend developer and UI/UX Designer.','This is my learning path.' ];
 const listCards = document.querySelectorAll('li');
-console.log(listCards)
 const appearOnScrollOptions = {
   threshold : 0,
   rootMargin: '-250px 0px -250px 0px',
