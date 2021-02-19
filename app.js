@@ -2,8 +2,9 @@ const text = document.getElementById('text');
 const phrases = ['Hello, I am Heze.', 'I am a Freelance Frontend developer and UI/UX Designer.','This is my learning path.' ];
 const listCards = document.querySelectorAll('li');
 const appearOnScrollOptions = {
+  root : document.querySelector('container'),
   threshold : 0,
-  rootMargin: '-250px 0px -250px 0px',
+  rootMargin: '-150px -200px -150px -200px',
 };
 let i = 0;
 let j = 0;

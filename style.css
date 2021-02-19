@@ -31,7 +31,7 @@ body {
 h1 {
   font-size: 40px;
   max-width: 50%;
-  min-height: 100vh;
+  min-height: 40px;
   margin:100px auto 50px auto;
   display: block;
   text-align: center;
@@ -204,7 +204,7 @@ transform:translateX(50%);
 .left,
 .right{
   opacity: 0;
-  transition: opacity 0.3s ease-in, transform 0.5s ease-in;
+  transition: opacity 0.5s ease-in, transform 0.7s ease-in;
 }
 
 .left.appear{
