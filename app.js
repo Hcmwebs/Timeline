@@ -69,7 +69,7 @@ const appearOnScroll = new IntersectionObserver(function (
       return;
     } else {
       entry.target.classList.add('appear');
-      appearOnScroll.unobserve(entry.target);
+      // appearOnScroll.unobserve(entry.target);
     }
   });
 },
