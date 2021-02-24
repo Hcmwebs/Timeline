@@ -1,11 +1,16 @@
 const text = document.getElementById('text');
-const phrases = ['Hello, I am Heze.', 'I am a Freelance Frontend developer and UI/UX Designer.','This is my learning path.' ];
+const phrases = [
+  'Hello, I am Heze.',
+  'I am a Freelance Frontend developer and UI/UX Designer.',
+  'This is my learning path.',
+];
 const listCards = document.querySelectorAll('li');
 const appearOnScrollOptions = {
-  root : document.querySelector('container'),
-  threshold : 0,
-  rootMargin: '-150px -200px -150px -200px',
+  // root : document.querySelector('container'),
+  threshold: 0,
+  rootMargin: '-150px',
 };
+
 let i = 0;
 let j = 0;
 let currentPhrase = [];
@@ -14,70 +19,62 @@ let isEnd = false;
 
 // Typewriter - effect
 
-function loop(){
-  isEnd = false
-  text.innerHTML =currentPhrase.join('')
+function loop() {
+  isEnd = false;
+  text.innerHTML = currentPhrase.join('');
 
-  if(i <phrases.length){
-
-    if(!isDeleting && j <= phrases[i].length){
-      currentPhrase.push(phrases[i][j])
-      j++
-      text.innerHTML =currentPhrase.join('')
+  if (i < phrases.length) {
+    if (!isDeleting && j <= phrases[i].length) {
+      currentPhrase.push(phrases[i][j]);
+      j++;
+      text.innerHTML = currentPhrase.join('');
     }
 
-
-    if (isDeleting && j<=phrases[i].length){
-      currentPhrase.pop(phrases[i][j])
-      j--
-      text.innerHTML =currentPhrase.join('')
+    if (isDeleting && j <= phrases[i].length) {
+      currentPhrase.pop(phrases[i][j]);
+      j--;
+      text.innerHTML = currentPhrase.join('');
     }
 
-    if(j == phrases[i].length){
-      isEnd  = true;
-      isDeleting = true
+    if (j == phrases[i].length) {
+      isEnd = true;
+      isDeleting = true;
     }
 
-    if(isDeleting && j ===0 ){
+    if (isDeleting && j === 0) {
       currentPhrase = [];
       isDeleting = false;
       i++;
 
-      if(i == phrases.length){
+      if (i == phrases.length) {
         i = 0;
-
       }
     }
-
-
   }
   const spedUp = Math.random() * (80 - 50) + 50;
-  const normalSpeed = Math.random() * (300 - 200 ) + 200;
+  const normalSpeed = Math.random() * (300 - 200) + 200;
   const time = isEnd ? 2500 : isDeleting ? spedUp : normalSpeed;
 
-  setTimeout(loop, time)
+  setTimeout(loop, time);
 }
 
-loop()
+loop();
 
+const appearOnScroll = new IntersectionObserver(function (
+  entries,
+  appearOnScroll
+) {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add('appear');
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOnScrollOptions);
 
-// OnScroll, listCards appear
-
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-entries.forEach(entry =>{
-  if(!entry.isIntersecting){
-    return;
-  }
-  else{
-    entry.target.classList.add('appear');
-    appearOnScroll.unobserve(entry.target)
-  }
-
-})
-
-}, appearOnScrollOptions);
-
-listCards.forEach(card =>{
+listCards.forEach((card) => {
   appearOnScroll.observe(card);
-})
-
+});
