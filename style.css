@@ -35,8 +35,13 @@ body {
 h1 {
   font-size: 40px;
   max-width: 50%;
+<<<<<<< HEAD
   min-height: 40px;
   margin: 100px auto 50px auto;
+=======
+  height: 40px;
+  margin: 100px auto;
+>>>>>>> 339106388bdd3b0d69c32290ab1d9023280ef3ae
   display: block;
   text-align: center;
   color: #fff;
@@ -180,6 +185,7 @@ footer .social {
     transform: translate(-50%, -50%);
   }
 }
+<<<<<<< HEAD
 /*
 .fade {
   opacity: 0;
@@ -195,15 +201,38 @@ footer .social {
 }
 .left,
 .right {
+=======
+
+.fade-move {
+  transition: opacity 0.3s ease-in, transform 0.5s ease-in;
+}
+.right {
   opacity: 0;
-  transition: opacity 0.5s ease-in, transform 0.7s ease-in;
+  transform: translateX(-1000px);
 }
 
+.left {
+>>>>>>> 339106388bdd3b0d69c32290ab1d9023280ef3ae
+  opacity: 0;
+  transform: translateX(1000px);
+}
+
+<<<<<<< HEAD
 .left.appear {
   transform: translateX(-50px);
   opacity: 1;
 }
 .right.appear {
-  transform: translateX(50px);
+=======
+.fade-move.right {
   opacity: 1;
+>>>>>>> 339106388bdd3b0d69c32290ab1d9023280ef3ae
+  transform: translateX(50px);
+}
+.fade-move.left {
+  opacity: 1;
+<<<<<<< HEAD
+=======
+  transform: translateX(-50px);
+>>>>>>> 339106388bdd3b0d69c32290ab1d9023280ef3ae
 }
